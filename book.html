@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Think Like the Top 1% — 30 Mental Models That Change Your Life</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== PAGE & PRINT SETUP ===== */
+        @page {
+            size: A4;
+            margin: 2.5cm;
+        }
+
+        @media print {
+            body {
+                font-size: 11pt;
+                color: #000;
+                background: #fff;
+            }
+            .cover-page {
+                page-break-after: always;
+            }
+            .toc-page {
+                page-break-after: always;
+            }
+            .part-title-page {
+                page-break-before: always;
+                page-break-after: always;
+            }
+            .chapter {
+                page-break-before: always;
+            }
+            .no-print {
+                display: none !important;
+            }
+            a {
+                color: #000 !important;
+                text-decoration: none !important;
+            }
+            .quote-block {
+                border-left: 3px solid #000;
+            }
+            @page :first {
+                margin-top: 0;
+                margin-bottom: 0;
+            }
+            @page {
+                @bottom-center {
+                    content: counter(page);
+                    font-family: 'Lora', serif;
+                    font-size: 9pt;
+                    color: #555;
+                }
+            }
+        }
+
+        /* ===== BASE RESET & TYPOGRAPHY ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 12pt;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #fff;
+            text-align: justify;
+            -webkit-hyphens: auto;
+            hyphens: auto;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 2.5cm;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', Georgia, serif;
+            text-align: left;
+            color: #111;
+            line-height: 1.3;
+            hyphens: none;
+        }
+
+        p {
+            margin-bottom: 0.85em;
+            text-indent: 1.5em;
+        }
+
+        p:first-of-type,
+        .quote-block + p,
+        h2 + p, h3 + p, h4 + p,
+        .reflection-box + p,
+        .action-box + p,
+        .case-study-box + p,
+        .summary-box + p {
+            text-indent: 0;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        /* ===== COVER PAGE ===== */
+        .cover-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 3cm 2cm;
+            page-break-after: always;
+        }
+
+        .cover-page .cover-rule-top,
+        .cover-page .cover-rule-bottom {
+            width: 60%;
+            height: 1px;
+            background: #1a1a1a;
+            margin: 0 auto;
+        }
+
+        .cover-page .cover-rule-top {
+            margin-bottom: 2.5cm;
+        }
+
+        .cover-page .cover-rule-bottom {
+            margin-top: 2.5cm;
+        }
+
+        .cover-page .cover-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 36pt;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            margin-bottom: 0.6cm;
+            color: #000;
+        }
+
+        .cover-page .cover-subtitle {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 14pt;
+            font-weight: 400;
+            font-style: italic;
+            color: #333;
+            margin-bottom: 2cm;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-page .cover-author {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 14pt;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #1a1a1a;
+        }
+
+        /* ===== TABLE OF CONTENTS ===== */
+        .toc-page {
+            page-break-after: always;
+            min-height: 100vh;
+            padding-top: 2cm;
+        }
+
+        .toc-page h1 {
+            font-size: 24pt;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.5cm;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .toc-part {
+            margin-bottom: 1.2cm;
+        }
+
+        .toc-part-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 12pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.4cm;
+            padding-bottom: 0.2cm;
+            border-bottom: 1px solid #ccc;
+            color: #111;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding-left: 0.5cm;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.25cm;
+            font-size: 10.5pt;
+            line-height: 1.6;
+        }
+
+        .toc-list li a {
+            color: #1a1a1a;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .toc-list li a:hover {
+            color: #444;
+        }
+
+        .toc-list li a .toc-title {
+            flex-shrink: 0;
+            padding-right: 0.3cm;
+        }
+
+        .toc-list li a .toc-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted #aaa;
+            margin: 0 0.2cm;
+            min-width: 1cm;
+        }
+
+        .toc-list .toc-chapter-num {
+            font-weight: 600;
+            min-width: 2.5cm;
+            display: inline-block;
+        }
+
+        /* ===== PART TITLE PAGE ===== */
+        .part-title-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            text-align: center;
+            page-break-before: always;
+            page-break-after: always;
+        }
+
+        .part-title-page .part-label {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 12pt;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #555;
+            margin-bottom: 0.8cm;
+        }
+
+        .part-title-page .part-name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 28pt;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.2;
+        }
+
+        .part-title-page .part-rule {
+            width: 4cm;
+            height: 1px;
+            background: #1a1a1a;
+            margin: 1cm auto 0;
+        }
+
+        /* ===== CHAPTER HEADING ===== */
+        .chapter {
+            page-break-before: always;
+            padding-top: 1.5cm;
+        }
+
+        .chapter-label {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 10pt;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #777;
+            margin-bottom: 0.3cm;
+            text-align: left;
+        }
+
+        .chapter-title {
+            font-size: 24pt;
+            font-weight: 700;
+            margin-bottom: 0.5cm;
+            line-height: 1.2;
+        }
+
+        .chapter-rule {
+            width: 3cm;
+            height: 2px;
+            background: #1a1a1a;
+            margin-bottom: 1.2cm;
+        }
+
+        /* ===== SECTION HEADINGS ===== */
+        .chapter h2 {
+            font-size: 16pt;
+            font-weight: 700;
+            margin-top: 1.5cm;
+            margin-bottom: 0.6cm;
+        }
+
+        .chapter h3 {
+            font-size: 13pt;
+            font-weight: 600;
+            margin-top: 1cm;
+            margin-bottom: 0.5cm;
+        }
+
+        /* ===== QUOTE BLOCK ===== */
+        .quote-block {
+            border-left: 3px solid #333;
+            margin: 1.2cm 0;
+            padding: 0.6cm 1cm;
+            background: #fafafa;
+        }
+
+        .quote-block .quote-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 13pt;
+            font-style: italic;
+            line-height: 1.6;
+            color: #222;
+            text-indent: 0;
+            margin-bottom: 0.3cm;
+        }
+
+        .quote-block .quote-author {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 9.5pt;
+            color: #666;
+            text-align: right;
+            text-indent: 0;
+            margin-bottom: 0;
+        }
+
+        /* ===== REFLECTION BOX ===== */
+        .reflection-box {
+            border: 1px solid #bbb;
+            margin: 1.2cm 0;
+            padding: 0.8cm 1cm;
+            background: #fafafa;
+        }
+
+        .reflection-box .box-label {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 10pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.4cm;
+            color: #333;
+        }
+
+        .reflection-box p {
+            text-indent: 0;
+            font-size: 10.5pt;
+            margin-bottom: 0.4em;
+        }
+
+        .reflection-box ul {
+            padding-left: 1.2cm;
+            margin-bottom: 0.4cm;
+        }
+
+        .reflection-box ul li {
+            font-size: 10.5pt;
+            margin-bottom: 0.25cm;
+            line-height: 1.6;
+        }
+
+        /* ===== ACTION EXERCISE BOX ===== */
+        .action-box {
+            border: 2px solid #333;
+            margin: 1.2cm 0;
+            padding: 0.8cm 1cm;
+            background: #fff;
+        }
+
+        .action-box .box-label {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 10pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.4cm;
+            color: #000;
+        }
+
+        .action-box p {
+            text-indent: 0;
+            font-size: 10.5pt;
+            margin-bottom: 0.4em;
+        }
+
+        .action-box ol, .action-box ul {
+            padding-left: 1.2cm;
+            margin-bottom: 0.4cm;
+        }
+
+        .action-box ol li, .action-box ul li {
+            font-size: 10.5pt;
+            margin-bottom: 0.25cm;
+            line-height: 1.6;
+        }
+
+        /* ===== CASE STUDY BOX ===== */
+        .case-study-box {
+            border-left: 4px solid #555;
+            margin: 1.2cm 0;
+            padding: 0.8cm 1cm;
+            background: #f7f7f7;
+        }
+
+        .case-study-box .box-label {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 10pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.4cm;
+            color: #333;
+        }
+
+        .case-study-box p {
+            text-indent: 0;
+            font-size: 10.5pt;
+            margin-bottom: 0.5em;
+        }
+
+        /* ===== SUMMARY BOX ===== */
+        .summary-box {
+            border-top: 2px solid #333;
+            border-bottom: 2px solid #333;
+            margin: 1.5cm 0;
+            padding: 0.8cm 1cm;
+            background: #fff;
+        }
+
+        .summary-box .box-label {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 10pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.4cm;
+            color: #111;
+        }
+
+        .summary-box ul {
+            padding-left: 1.2cm;
+            margin-bottom: 0.4cm;
+        }
+
+        .summary-box ul li {
+            font-size: 10.5pt;
+            margin-bottom: 0.3cm;
+            line-height: 1.6;
+        }
+
+        .summary-box p {
+            text-indent: 0;
+            font-size: 10.5pt;
+        }
+
+        /* ===== HORIZONTAL DIVIDERS ===== */
+        .divider {
+            width: 100%;
+            text-align: center;
+            margin: 1.2cm 0;
+            border: none;
+            font-size: 14pt;
+            color: #999;
+            letter-spacing: 8px;
+        }
+
+        .divider::after {
+            content: "⁂";
+        }
+
+        .divider-line {
+            width: 40%;
+            height: 1px;
+            background: #ccc;
+            margin: 1cm auto;
+            border: none;
+        }
+
+        /* ===== FOOTER / PAGE NUMBERS ===== */
+        .page-footer {
+            position: fixed;
+            bottom: 1cm;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: 'Lora', Georgia, serif;
+            font-size: 9pt;
+            color: #888;
+        }
+
+        /* ===== UTILITY ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 { margin-top: 0.5cm; }
+        .mt-2 { margin-top: 1cm; }
+        .mb-1 { margin-bottom: 0.5cm; }
+        .mb-2 { margin-bottom: 1cm; }
+
+        .first-letter::first-letter {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3.2em;
+            float: left;
+            line-height: 0.85;
+            padding-right: 0.08em;
+            padding-top: 0.05em;
+            font-weight: 700;
+            color: #111;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================== -->
+    <!-- COVER PAGE                                      -->
+    <!-- ============================================== -->
+    <div class="cover-page">
+        <div class="cover-rule-top"></div>
+        <h1 class="cover-title">Think Like<br>the Top 1%</h1>
+        <p class="cover-subtitle">30 Mental Models That Change Your Life</p>
+        <p class="cover-author">Shorif Ahmed</p>
+        <div class="cover-rule-bottom"></div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TABLE OF CONTENTS                               -->
+    <!-- ============================================== -->
+    <div class="toc-page">
+        <h1>Contents</h1>
+
+        <!-- Part 1 -->
+        <div class="toc-part">
+            <div class="toc-part-title">Part 1 — Foundation of Thinking</div>
+            <ul class="toc-list">
+                <li><a href="#ch1"><span class="toc-title"><span class="toc-chapter-num">Chapter 1</span> What Are Mental Models?</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch2"><span class="toc-title"><span class="toc-chapter-num">Chapter 2</span> Why Thinking Beats Information</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch3"><span class="toc-title"><span class="toc-chapter-num">Chapter 3</span> How the World's Greatest Thinkers Think</span><span class="toc-dots"></span></a></li>
+            </ul>
+        </div>
+
+        <!-- Part 2 -->
+        <div class="toc-part">
+            <div class="toc-part-title">Part 2 — 30 Mental Models</div>
+            <ul class="toc-list">
+                <li><a href="#ch4"><span class="toc-title"><span class="toc-chapter-num">Chapter 4</span> First Principles Thinking</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch5"><span class="toc-title"><span class="toc-chapter-num">Chapter 5</span> Inversion</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch6"><span class="toc-title"><span class="toc-chapter-num">Chapter 6</span> Circle of Competence</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch7"><span class="toc-title"><span class="toc-chapter-num">Chapter 7</span> Second-Order Thinking</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch8"><span class="toc-title"><span class="toc-chapter-num">Chapter 8</span> Probabilistic Thinking</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch9"><span class="toc-title"><span class="toc-chapter-num">Chapter 9</span> Occam's Razor</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch10"><span class="toc-title"><span class="toc-chapter-num">Chapter 10</span> Hanlon's Razor</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch11"><span class="toc-title"><span class="toc-chapter-num">Chapter 11</span> Map Is Not the Territory</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch12"><span class="toc-title"><span class="toc-chapter-num">Chapter 12</span> Opportunity Cost</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch13"><span class="toc-title"><span class="toc-chapter-num">Chapter 13</span> Pareto Principle (80/20 Rule)</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch14"><span class="toc-title"><span class="toc-chapter-num">Chapter 14</span> The Power of Compounding</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch15"><span class="toc-title"><span class="toc-chapter-num">Chapter 15</span> Confirmation Bias</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch16"><span class="toc-title"><span class="toc-chapter-num">Chapter 16</span> Survivorship Bias</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch17"><span class="toc-title"><span class="toc-chapter-num">Chapter 17</span> Sunk Cost Fallacy</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch18"><span class="toc-title"><span class="toc-chapter-num">Chapter 18</span> Margin of Safety</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch19"><span class="toc-title"><span class="toc-chapter-num">Chapter 19</span> Leverage</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch20"><span class="toc-title"><span class="toc-chapter-num">Chapter 20</span> Network Effects</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch21"><span class="toc-title"><span class="toc-chapter-num">Chapter 21</span> Feedback Loops</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch22"><span class="toc-title"><span class="toc-chapter-num">Chapter 22</span> Regression to the Mean</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch23"><span class="toc-title"><span class="toc-chapter-num">Chapter 23</span> Antifragility</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch24"><span class="toc-title"><span class="toc-chapter-num">Chapter 24</span> The Eisenhower Matrix</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch25"><span class="toc-title"><span class="toc-chapter-num">Chapter 25</span> Thought Experiments</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch26"><span class="toc-title"><span class="toc-chapter-num">Chapter 26</span> Via Negativa (The Power of Subtraction)</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch27"><span class="toc-title"><span class="toc-chapter-num">Chapter 27</span> Anchoring</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch28"><span class="toc-title"><span class="toc-chapter-num">Chapter 28</span> Availability Heuristic</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch29"><span class="toc-title"><span class="toc-chapter-num">Chapter 29</span> Mental Accounting</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch30"><span class="toc-title"><span class="toc-chapter-num">Chapter 30</span> Dunning-Kruger Effect</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch31"><span class="toc-title"><span class="toc-chapter-num">Chapter 31</span> Comparative Advantage</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch32"><span class="toc-title"><span class="toc-chapter-num">Chapter 32</span> Game Theory Basics</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch33"><span class="toc-title"><span class="toc-chapter-num">Chapter 33</span> Bayesian Updating</span><span class="toc-dots"></span></a></li>
+            </ul>
+        </div>
+
+        <!-- Part 3 -->
+        <div class="toc-part">
+            <div class="toc-part-title">Part 3 — How to Build a Mental Model System</div>
+            <ul class="toc-list">
+                <li><a href="#ch34"><span class="toc-title"><span class="toc-chapter-num">Chapter 34</span> Combining Models</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch35"><span class="toc-title"><span class="toc-chapter-num">Chapter 35</span> Thinking in Layers</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch36"><span class="toc-title"><span class="toc-chapter-num">Chapter 36</span> Avoiding Cognitive Bias</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch37"><span class="toc-title"><span class="toc-chapter-num">Chapter 37</span> Long-Term Thinking Strategy</span><span class="toc-dots"></span></a></li>
+            </ul>
+        </div>
+
+        <!-- Part 4 -->
+        <div class="toc-part">
+            <div class="toc-part-title">Part 4 — 30-Day Implementation Plan</div>
+            <ul class="toc-list">
+                <li><a href="#ch38"><span class="toc-title"><span class="toc-chapter-num">Chapter 38</span> Daily Execution System</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch39"><span class="toc-title"><span class="toc-chapter-num">Chapter 39</span> Weekly Review Template</span><span class="toc-dots"></span></a></li>
+                <li><a href="#ch40"><span class="toc-title"><span class="toc-chapter-num">Chapter 40</span> Writing Your Personal Philosophy</span><span class="toc-dots"></span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- PART 1: FOUNDATION OF THINKING                  -->
+    <!-- ============================================== -->
+    <div class="part-title-page">
+        <p class="part-label">Part One</p>
+        <h2 class="part-name">Foundation of Thinking</h2>
+        <div class="part-rule"></div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- CHAPTER 1: What Are Mental Models?              -->
+    <!-- ============================================== -->
+    <div class="chapter" id="ch1">
+        <p class="chapter-label">Chapter One</p>
+        <h1 class="chapter-title">What Are Mental Models?</h1>
+        <div class="chapter-rule"></div>
+
+        <div class="quote-block">
+            <p class="quote-text">"The quality of your thinking determines the quality of your life."</p>
+            <p class="quote-author">— Shane Parrish</p>
+        </div>
+
+        <p class="first-letter">When I was nineteen years old, studying at a small coaching centre in Dhaka and dreaming of studying abroad, I believed the secret to success was simple: work harder. Wake up earlier. Read more textbooks. Memorize more facts. I watched my classmates — hundreds of brilliant students — all doing exactly the same thing. We were drowning in information, yet none of us felt any closer to the lives we imagined. We had knowledge, but we did not have clarity. We had ambition, but we did not have a framework to channel it. Then one evening, while scrolling through a second-hand copy of <em>Poor Charlie's Almanack</em> I found at Nilkhet, I encountered an idea that broke something open inside my mind. Charlie Munger — Warren Buffett's partner and one of the wealthiest, wisest people alive — said that the secret to his success was not finance. It was not stock-picking. It was <strong>mental models</strong>.</p>
+
+        <p>That was the first time I heard the phrase. And it changed everything about how I approached thinking, decisions, and ultimately, my entire life.</p>
+
+        <h2>So What Exactly Is a Mental Model?</h2>
+
+        <p>A mental model is a simplified representation of how something works. Think of it like a map. A map of Dhaka is not Dhaka itself — it leaves out the noise of rickshaws, the smell of street food, the chaos of Motijheel at rush hour. But a good map helps you navigate from Gulshan to Dhanmondi without getting lost. That is what a mental model does for your thinking. It gives you a reliable framework to navigate complex situations.</p>
+
+        <p>Every discipline in the world — physics, economics, psychology, biology, engineering — has produced fundamental principles that explain how things work. Gravity is a mental model from physics. Supply and demand is a mental model from economics. Natural selection is a mental model from biology. When you collect these models and store them in your mind, you develop what Munger calls a <strong>"latticework of mental models."</strong> Instead of seeing the world through one narrow lens — the way a doctor sees only health problems, or an engineer sees only systems — you begin to see reality from multiple angles at once.</p>
+
+        <p>This is the difference between a good thinker and a great one. A good thinker knows their field deeply. A great thinker borrows from every field and sees connections that others miss entirely.</p>
+
+        <div class="case-study-box">
+            <p class="box-label">Case Study — Elon Musk and the Rocket Problem</p>
+            <p>When Elon Musk decided to start SpaceX, he went to Russia to buy rockets. The quoted price? Over 65 million dollars per rocket. Most people would have accepted that as the reality of the market. But Musk did not think like most people. He used a mental model called <strong>First Principles Thinking</strong> — which we will explore deeply in Part 2 — to break the rocket down into its raw materials: aerospace-grade aluminium, titanium, copper, carbon fibre. He calculated the raw material cost. It was roughly two percent of the quoted price.</p>
+            <p>So instead of buying a rocket, he built his own. SpaceX now launches rockets at a fraction of what it cost NASA. That single mental model — breaking a problem into its fundamental truths rather than accepting conventional wisdom — created a company worth over 150 billion dollars.</p>
+        </div>
+
+        <h2>Why Should You Care About Mental Models?</h2>
+
+        <p>Here is the uncomfortable truth that nobody tells you in school or university: the world does not reward people who have the most information. Google has all the information. Wikipedia has all the information. ChatGPT has all the information. The world rewards people who <strong>think clearly and make better decisions</strong>.</p>
+
+        <p>Every day, you are making decisions. Which university to apply to. Whether to take that scholarship or wait for a better one. Whether to start a business or get a job first. Whether to invest your savings or spend them. Whether to trust someone's advice or question it. Most people make these decisions based on emotion, social pressure, or whatever their parents told them. But the top one percent — the people who build extraordinary careers, create wealth, and live with genuine clarity — they make decisions using mental models.</p>
+
+        <p>Jeff Bezos did not build Amazon because he was the smartest programmer in the room. He built Amazon because he understood a mental model called <strong>regret minimization</strong>. When he was deciding whether to leave his comfortable Wall Street job to sell books on the internet, he imagined himself at age eighty, looking back on his life. He asked: "Will I regret not trying this?" The answer was obvious. He quit his job the next week. That is the power of having a thinking framework. It cuts through the noise. It silences the fear. It gives you a clear path when everyone else is paralysed by confusion.</p>
+
+        <h2>The Tragedy of One-Dimensional Thinking</h2>
+
+        <p>Most of us grow up learning to think inside a single discipline. If you study economics, you see every problem as an economic problem. If you study engineering, you see every problem as a systems problem. The psychologist Abraham Maslow captured this perfectly: <em>"To the man with only a hammer, everything looks like a nail."</em></p>
+
+        <p>This is the trap. When you have only one mental model, you force-fit every situation into that model — even when it does not apply. The economics student tries to optimise relationships like transactions. The engineering student tries to design their life like a machine. The medical student diagnoses their career problems like diseases. Real life does not work in neat categories. A single decision — like moving to a new country to study — involves psychology (fear, ambition, identity), economics (cost, return on investment), probability (what are the real chances of success?), and strategy (timing, positioning, competition). You need multiple models to think clearly about even one important decision.</p>
+
+        <div class="divider"></div>
+
+        <h2>How This Book Will Transform Your Thinking</h2>
+
+        <p>This book is not a collection of abstract theories. I wrote it for people like me — and like you. Young people in Bangladesh and across South Asia who are hungry for a better life, who dream of studying abroad, building something meaningful, becoming financially independent, and thinking at a world-class level. Every mental model in this book will be explained with real stories, practical examples, and exercises you can apply immediately. You will learn to think like Bezos, Munger, Musk, and the world's most successful investors, entrepreneurs, and strategists — not by copying their actions, but by adopting their <strong>thinking tools</strong>.</p>
+
+        <p>By the time you finish this book, you will not just know thirty mental models. You will have a system for making decisions, solving problems, avoiding common traps, and seeing the world with a clarity that ninety-nine percent of people never achieve.</p>
+
+        <p>The journey starts here. And the only prerequisite is a willingness to question everything you think you already know.</p>
+
+        <div class="summary-box">
+            <p class="box-label">Chapter Reflection</p>
+            <ul>
+                <li>A <strong>mental model</strong> is a simplified framework that helps you understand how some aspect of the world works.</li>
+                <li>The most successful thinkers — Munger, Bezos, Musk — rely not on raw intelligence, but on a <strong>collection of mental models</strong> drawn from many disciplines.</li>
+                <li>One-dimensional thinking is the most common trap among educated people. The cure is building a <strong>latticework</strong> of models from multiple fields.</li>
+                <li>This book will give you thirty powerful models, plus a system for combining them in your daily decisions.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- CHAPTER 2: Why Thinking Beats Information       -->
+    <!-- ============================================== -->
+    <div class="chapter" id="ch2">
+        <p class="chapter-label">Chapter Two</p>
+        <h1 class="chapter-title">Why Thinking Beats Information</h1>
+        <div class="chapter-rule"></div>
+
+        <div class="quote-block">
+            <p class="quote-text">"It is not that I'm so smart, it's just that I stay with problems longer."</p>
+            <p class="quote-author">— Albert Einstein</p>
+        </div>
+
+        <p class="first-letter">In 2006, a quiet, unassuming hedge fund manager named Michael Burry made a bet that nearly everyone on Wall Street thought was insane. He bet against the United States housing market — the most stable asset class in the country, backed by the world's largest banks, rated AAA by every major agency. His colleagues called him crazy. His investors demanded their money back. His own team questioned his judgment. Yet Burry did not flinch. He had done something that almost no one else on Wall Street had bothered to do: he had actually <em>read</em> the mortgage documents. Not summaries. Not analyst reports. The actual contracts — thousands of pages of them. And what he found was terrifying. The mortgages bundled into those "safe" investments were ticking time bombs — loans given to people who could never repay them, structured in ways that guaranteed collapse.</p>
+
+        <p>Two years later, the housing market crashed. The global financial system nearly collapsed. Lehman Brothers disappeared overnight. Millions lost their homes. And Michael Burry made over 700 million dollars for his investors. His story, immortalised in Michael Lewis's book <em>The Big Short</em>, contains one of the most important lessons you will ever learn: <strong>having more information is not the same as thinking better.</strong></p>
+
+        <h2>The Information Trap</h2>
+
+        <p>We live in the most information-rich era in human history. You can access the entire library of MIT for free. You can watch lectures from Harvard professors on YouTube. You can read the annual reports of every Fortune 500 company before breakfast. And yet — here is the paradox — people are not making better decisions. They are making <em>worse</em> ones.</p>
+
+        <p>Why? Because there is a critical difference between <strong>consuming information</strong> and <strong>processing it into understanding</strong>. Information is raw data. Thinking is what you do with it. Consider two students preparing for a scholarship interview. Student A reads fifty articles about the university, watches twenty YouTube videos, and memorises the names of all the professors. Student B reads five carefully chosen articles, then spends three hours thinking deeply about why she wants this scholarship, what unique perspective she brings, and how she would answer the ten hardest questions they could ask. Who do you think performs better in the interview?</p>
+
+        <p>Almost always, it is Student B. Not because she had more information, but because she <strong>thought more deeply</strong> about the information she had.</p>
+
+        <div class="case-study-box">
+            <p class="box-label">Case Study — Warren Buffett's Empty Calendar</p>
+            <p>Warren Buffett, arguably the greatest investor in history, is famous for something that baffles most executives: his calendar is nearly empty. While the average CEO fills every hour with meetings, calls, and conferences, Buffett spends roughly eighty percent of his working day doing just two things — reading and thinking. He reads 500 pages a day. But he does not read to collect facts. He reads to <strong>build and refine mental models</strong>. His partner Charlie Munger once said, "Warren does not make more decisions than other investors. He makes fewer, but better ones." That is the difference. In a world obsessed with doing more, the greatest investor alive focuses on thinking more.</p>
+        </div>
+
+        <h2>The Illusion of Busyness</h2>
+
+        <p>There is a disease spreading through our generation, and it is more dangerous than procrastination. It is the <strong>illusion of productivity</strong>. We confuse movement with progress. We confuse consuming with learning. We confuse being busy with being effective. A student who spends eight hours "studying" — switching between apps, highlighting random passages, re-reading notes without actually thinking — feels productive. But they have not truly learned anything. They have performed the <em>theatre</em> of studying without doing the <em>work</em> of understanding.</p>
+
+        <p>I fell into this trap for years. Growing up in Bangladesh, I thought success meant grinding — more hours, more effort, more suffering. I wore exhaustion like a badge of honour. But I noticed something strange: the students who topped every exam were never the ones who studied the longest hours. They were the ones who studied with the most <strong>clarity</strong>. They understood which concepts mattered, how ideas connected, and where to focus their limited energy. They were not working harder. They were <strong>thinking better</strong>.</p>
+
+        <h2>Deep Work vs. Shallow Noise</h2>
+
+        <p>Cal Newport, a computer science professor at Georgetown University, introduced a powerful concept in his book <em>Deep Work</em>: the ability to focus without distraction on a cognitively demanding task is becoming both increasingly <strong>rare</strong> and increasingly <strong>valuable</strong>. In other words, thinking deeply is a competitive advantage — precisely because almost nobody does it anymore.</p>
+
+        <p>Think about your own day. How many minutes do you spend in genuine, focused, undistracted thought? Not scrolling. Not reacting. Not consuming. Just <em>thinking</em>. For most people, the answer is close to zero. We have outsourced our thinking to algorithms, influencers, and the first Google result. We copy opinions instead of forming them. We adopt strategies because they are trending, not because we have reasoned through them.</p>
+
+        <p>The mental models in this book are designed to reverse that. Each model is a <strong>thinking tool</strong> — a lens that helps you process information more effectively, spot patterns others miss, and make decisions that compound over time.</p>
+
+        <div class="divider"></div>
+
+        <h2>The Munger Method: Read, Think, Decide</h2>
+
+        <p>Charlie Munger has a beautifully simple system. He reads voraciously across many disciplines — biology, physics, history, psychology, economics. But reading is just the input. The real work happens when he <strong>sits quietly and thinks</strong> about what he has read, connecting new information to his existing lattice of mental models. Only after that deep processing does he act.</p>
+
+        <p>This three-step process — <strong>Read, Think, Decide</strong> — is the opposite of how most people operate. Most people read, react, and regret. They consume information and immediately act on it without pausing to think critically. They see a business opportunity on social media and invest their savings the same day. They read one article about a university and decide to apply without researching alternatives. They hear one side of a story and form a permanent opinion.</p>
+
+        <p>The cost of this impulsive approach is enormous. Bad decisions compound just like good ones — except in the wrong direction. A poorly chosen university can cost you four years. A poorly timed investment can cost you decades of savings. A poorly formed opinion can cost you a relationship. The solution is not to stop consuming information. The solution is to <strong>build a gap between information and action</strong> — and fill that gap with structured thinking.</p>
+
+        <h2>How to Actually Think Better</h2>
+
+        <p>Improving your thinking is not mysterious. It is a skill, like any other, and it can be practised. Here are the foundations:</p>
+
+        <p><strong>First, slow down.</strong> When you encounter a decision, resist the urge to act immediately. Give yourself permission to think. Write the problem down. Sleep on it. Discuss it with someone who thinks differently from you.</p>
+
+        <p><strong>Second, seek multiple perspectives.</strong> Never look at a problem from only one angle. Ask: how would an economist see this? A psychologist? A historian? A scientist? The more lenses you apply, the closer you get to the truth.</p>
+
+        <p><strong>Third, study mental models.</strong> The thirty models in this book are not random. They are drawn from the most reliable insights across multiple disciplines. Each one gives you a new way to process the world — and the more you practise using them, the more natural clear thinking becomes.</p>
+
+        <div class="reflection-box">
+            <p class="box-label">Reflection Exercise</p>
+            <p>Think about the last important decision you made — choosing a university, a career path, an investment, or a major purchase. Now honestly answer:</p>
+            <ul>
+                <li>How much time did you spend gathering information?</li>
+                <li>How much time did you spend <em>deeply thinking</em> about that information?</li>
+                <li>Did you consider the problem from more than one angle?</li>
+                <li>If you could go back, what would you do differently?</li>
+            </ul>
+        </div>
+
+        <div class="summary-box">
+            <p class="box-label">Chapter Reflection</p>
+            <ul>
+                <li>More information does not equal better decisions. <strong>Thinking deeply</strong> about the right information is what matters.</li>
+                <li>The illusion of busyness tricks us into confusing activity with progress. Real progress comes from clarity, not volume.</li>
+                <li>The Read-Think-Decide method — consuming widely, processing deeply, then acting deliberately — is the hallmark of history's greatest thinkers.</li>
+                <li>Deep, focused thinking is now a rare and valuable skill. Mental models are the tools that make such thinking structured and reliable.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- CHAPTER 3: How the World's Greatest Thinkers Think -->
+    <!-- ============================================== -->
+    <div class="chapter" id="ch3">
+        <p class="chapter-label">Chapter Three</p>
+        <h1 class="chapter-title">How the World's Greatest Thinkers Think</h1>
+        <div class="chapter-rule"></div>
+
+        <div class="quote-block">
+            <p class="quote-text">"I think it is undeniably true that the human brain must work in models. The trick is to have your brain work better than the other person's brain because it understands the most fundamental models."</p>
+            <p class="quote-author">— Charlie Munger</p>
+        </div>
+
+        <p class="first-letter">There is a photograph from 1927 that I keep saved on my phone. It shows a group of twenty-nine people sitting together in Brussels at the Fifth Solvay Conference. In that single photograph are Albert Einstein, Marie Curie, Niels Bohr, Werner Heisenberg, Max Planck, Erwin Schrödinger, and Paul Dirac — among others. Seventeen of the twenty-nine attendees were or would become Nobel Prize winners. It is arguably the most intelligent gathering of human beings ever captured in one image. But here is what fascinated me when I first saw it: these people did not agree with each other. Einstein and Bohr famously disagreed on the nature of quantum mechanics for decades. Schrödinger created thought experiments specifically to challenge the Copenhagen interpretation. These brilliant minds spent years arguing, debating, and refining each other's ideas.</p>
+
+        <p>And that is precisely why they changed the world. They did not think <em>alike</em>. They thought <em>rigorously</em>. They brought different mental models to the table and used them to challenge, test, and strengthen each other's understanding. That collision of frameworks — not any single genius — is what produced the greatest era of scientific discovery in human history.</p>
+
+        <h2>The Multidisciplinary Advantage</h2>
+
+        <p>Charlie Munger has spent more than fifty years studying what makes great thinkers great. His conclusion is not what most people expect. It is not IQ. It is not education. It is not even experience. It is <strong>multidisciplinary thinking</strong> — the habit of collecting mental models from many different fields and combining them to solve problems.</p>
+
+        <p>Munger himself is the living proof of this approach. Though he is known as an investor, his reading habits span evolutionary biology, physics, mathematics, psychology, history, and philosophy. When analysing a business, he does not just look at the financial statements. He considers the <strong>psychology</strong> of the customers, the <strong>evolutionary dynamics</strong> of the industry, the <strong>network effects</strong> of the product, and the <strong>historical patterns</strong> of similar companies. He layers model upon model until a clear picture emerges. This is why Buffett calls him "the broadest thinker I have ever encountered."</p>
+
+        <p>The lesson for us is profound. If you want to become an exceptional thinker, do not go deeper into one subject. Go <strong>wider across many subjects</strong>, and then integrate what you learn.</p>
+
+        <div class="case-study-box">
+            <p class="box-label">Case Study — Leonardo da Vinci: The Original Multidisciplinary Thinker</p>
+            <p>Five hundred years before Munger articulated the idea, Leonardo da Vinci was already living it. Leonardo was not just a painter. He was an engineer, anatomist, architect, musician, mathematician, inventor, and geologist — often all in the same week. His study of how water flows informed his painting of fabric and hair. His anatomical dissections made his portraits more lifelike than anything the world had seen. His engineering knowledge allowed him to design stage machinery that made his theatrical productions legendary.</p>
+            <p>Leonardo did not see these as separate disciplines. He saw them as <strong>connected systems</strong>. The same principles that governed the flow of water governed the flow of blood. The same geometry that structured buildings structured the human body. His genius was not in mastering one field but in seeing the invisible bridges between all fields.</p>
+        </div>
+
+        <h2>How Bezos Thinks: The Regret Minimization Framework</h2>
+
+        <p>Jeff Bezos is often praised for his business instincts, but what he actually possesses is a set of powerful mental models that he applies with extraordinary discipline. One of his most famous is the <strong>Regret Minimization Framework</strong>.</p>
+
+        <p>In 1994, Bezos was a well-paid vice president at a Wall Street firm. The internet was beginning to grow, and he saw an opportunity to sell books online. Everyone around him said it was foolish to leave a secure, high-paying job for something so uncertain. His boss took him on a long walk and urged him to stay. His family was worried.</p>
+
+        <p>So Bezos created a mental model to cut through the noise. He projected himself forward to age eighty and asked: "When I am eighty years old, will I regret leaving Wall Street? No. Will I regret not trying to participate in this thing called the internet that I believe is going to be huge? Absolutely yes." The decision became obvious. He resigned the next day.</p>
+
+        <p>What Bezos did was not impulsive. It was the opposite — it was <strong>structured thinking</strong> using a framework that eliminated emotional noise and focused on what truly mattered: long-term fulfilment over short-term comfort. This is what mental models do. They do not tell you what to decide. They give you a <strong>reliable process</strong> for deciding.</p>
+
+        <h2>Munger's Latticework: Why One Model Is Never Enough</h2>
+
+        <p>Munger uses a metaphor that I find incredibly useful. He says you should think of mental models as tools in a toolbox. If you only have a hammer, you will treat every problem like a nail — even when the problem is actually a screw, a bolt, or a delicate piece of glass. The person with a full toolbox — hammer, screwdriver, wrench, pliers, measuring tape — can assess each problem individually and choose the right tool.</p>
+
+        <p>This is what he means by a <strong>"latticework"</strong> of mental models. The models do not sit in isolation. They overlap, reinforce, and sometimes contradict each other. And it is in the tension between models that the deepest insights emerge.</p>
+
+        <p>Consider a practical example. You are deciding whether to accept a job offer in a new city. A single mental model — say, financial analysis — might tell you the salary is good, so you should accept. But layer on additional models and the picture becomes richer. <strong>Opportunity cost</strong> asks: what am I giving up by taking this job? <strong>Second-order thinking</strong> asks: what are the downstream consequences of this move in two, five, ten years? <strong>Circle of competence</strong> asks: does this role play to my strengths? <strong>Regret minimization</strong> asks: will I regret not taking this chance? <strong>Inversion</strong> asks: what would make this decision a disaster, and how likely is that?</p>
+
+        <p>Suddenly, you are not just making a "job decision." You are conducting a <strong>multi-dimensional analysis</strong> that considers financial, psychological, strategic, and personal factors simultaneously. That is the power of the latticework.</p>
+
+        <div class="divider"></div>
+
+        <h2>The Feynman Technique: Thinking by Teaching</h2>
+
+        <p>Richard Feynman, the Nobel Prize-winning physicist, had a deceptively simple method for understanding anything. He would try to explain it as if teaching a twelve-year-old. If he could not explain a concept in simple, jargon-free language, he concluded that he did not truly understand it himself. He would then go back to the source material, study the gaps in his understanding, and try again.</p>
+
+        <p>This technique is devastatingly effective because it exposes a problem most of us never notice: we often <em>think</em> we understand something when we have merely memorised the vocabulary. We can recite the definition of supply and demand, but can we explain why the price of rickshaw rides goes up during rain? We can define "compound interest," but can we explain to a tea-stall owner in Comilla why starting to save early matters more than saving a lot later?</p>
+
+        <p>The Feynman Technique forces <strong>genuine understanding</strong>. And genuine understanding — not surface familiarity — is what you need to apply mental models effectively.</p>
+
+        <h2>The Common Thread</h2>
+
+        <p>Einstein. Da Vinci. Munger. Bezos. Feynman. These thinkers come from different centuries, different disciplines, and different backgrounds. But they share a common thread: <strong>none of them relied on a single way of thinking.</strong> They all collected frameworks, tested them against reality, combined them in creative ways, and constantly refined their understanding. They were not smarter than everyone else — at least not in the way we usually define smart. They were <strong>better equipped</strong>. They had more tools, and they knew when to use each one.</p>
+
+        <p>That is exactly what this book will give you. Not thirty isolated lessons, but thirty interconnected tools that, once internalised, will fundamentally change how you see problems, evaluate opportunities, and make decisions. You do not need a degree from Harvard. You do not need to be born wealthy. You do not need an extraordinary IQ. You need a <strong>system for thinking clearly</strong>. And you are about to build one.</p>
+
+        <div class="action-box">
+            <p class="box-label">Action Exercise</p>
+            <p>Choose one topic you believe you understand well — a concept from your studies, a business idea, or even a personal belief. Now try the Feynman Technique:</p>
+            <ol>
+                <li>Write an explanation of the topic as if you are teaching a thirteen-year-old.</li>
+                <li>Identify every point where your explanation becomes vague, uses jargon, or skips steps.</li>
+                <li>Go back to your sources and fill those gaps.</li>
+                <li>Rewrite your explanation until it is crystal clear.</li>
+            </ol>
+            <p>This single exercise will reveal more about your actual understanding than any exam ever could.</p>
+        </div>
+
+        <div class="summary-box">
+            <p class="box-label">Chapter Reflection</p>
+            <ul>
+                <li>The world's greatest thinkers — from Leonardo da Vinci to Charlie Munger — share one trait: they think <strong>across disciplines</strong>, not within a single one.</li>
+                <li>Mental models work best as a <strong>latticework</strong>: layered, interconnected frameworks that provide multi-dimensional clarity on any problem.</li>
+                <li>Structured thinking frameworks — like Bezos's Regret Minimization — do not remove emotion from decisions; they ensure emotion does not <strong>override</strong> reason.</li>
+                <li>True understanding means being able to <strong>explain simply</strong>. The Feynman Technique is the most reliable test of whether you genuinely understand something.</li>
+                <li>You do not need genius-level intelligence. You need a <strong>system of thinking tools</strong> — and this book is that system.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PART 2 STARTS HERE -->
+
+</body>
+</html>
